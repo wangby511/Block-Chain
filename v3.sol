@@ -28,7 +28,6 @@ contract Payroll {
         var employee = employees[employeeId];
         assert(employee.id != 0x0);
         _;
-        
     }
     
     function _partialPaid(Employee employee) private {
