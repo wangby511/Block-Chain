@@ -24,9 +24,17 @@ contract Payroll is Ownable{
         _;
         
     }
+    modifier employeeNotExist(address employeeId) {
+         var employee = employees[employeeId];
+         assert(employee.id == 0x0);
+         _;
+     }
     
     function _partialPaid(Employee employee) private {
-        uint payment = employee.salary * (now - employee.lastPayday) / payDuration;
+        
+        uint payment = employee.salary
+                       .mul(now.sub(employee.lastPayday))
+                       .div(payDuration);
         employee.id.transfer(payment);
     }
 
@@ -87,4 +95,11 @@ contract Payroll is Ownable{
          employees[msg.sender].lastPayday = nextPayday;
          employee.id.transfer(employee.salary);
     }
+    
+    // new changePaymentAddress function here
+    function changePaymentAddress(address employeeId, address newemployeeId) employeeExist(employeeId) employeeNotExist(newemployeeId) {
+         employees[newemployeeId] = employees[employeeId];
+         employees[newemployeeId].id = newemployeeId;
+         delete employees[employeeId];
+     }
 }
