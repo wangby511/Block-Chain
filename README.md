@@ -1,5 +1,7 @@
 Block-Chain
 
+工程文件夹为payroll
+
 $ node -v //check the version of node.js
 
 $ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
