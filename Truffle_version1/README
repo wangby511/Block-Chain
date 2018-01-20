@@ -59,3 +59,13 @@ module.exports = {
    return simpleStorageInstance.set(29, {from: accounts[0]})
 访问 localhost:3000 可以看到更改的值
 
+The html page shows as follows:
+
+"Good to Go!
+Your Truffle Box is installed and ready.
+
+Smart Contract Example
+If your contracts compiled and migrated successfully, below will show a stored value of 5 (by default).
+
+Try changing the value stored on line 59 of App.js.
+The stored value is: 89"
